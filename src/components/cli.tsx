@@ -58,7 +58,7 @@ function CLI() {
       type: "input",
     },
     {
-      message: INITIAL_FILES.find((f) => f.name === "experience.txt")?.content,
+      message: INITIAL_FILES.find((f) => f.name === "experience.txt")?.content!,
       type: "output",
     },
   ]);
