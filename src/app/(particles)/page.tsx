@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CLI from "../components/cli";
+import CLI from "../../components/cli";
 
 export default function Home() {
   return (
