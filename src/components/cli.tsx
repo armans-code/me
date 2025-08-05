@@ -52,16 +52,7 @@ interface File {
 }
 
 function CLI() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      message: "cat experience.txt",
-      type: "input",
-    },
-    {
-      message: INITIAL_FILES.find((f) => f.name === "experience.txt")?.content!,
-      type: "output",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [files, setFiles] = useState<File[]>(INITIAL_FILES);
 
