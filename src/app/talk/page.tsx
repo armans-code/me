@@ -43,10 +43,10 @@ function page() {
         <div className="flex items-center gap-2 line-through">
           <p>write me a note below, i check these frequently</p>
         </div>
-        <p>🚧 this page is down because i'm out of free projects on supabase</p>
-        <p>will be switching to a different database provider soon!</p>
-        <p>until then, the best way to reach me is via x.com dms</p>
-        <p></p>
+        <p>🚧 this page is down</p>
+        {/* <p>🚧 this page is down because i'm out of free projects on supabase</p> */}
+        {/* <p>will be switching to a different database provider soon!</p>
+        <p>until then, the best way to reach me is via x.com dms</p> */}
         <form className="flex flex-col gap-4 mt-20 items-end">
           <div className="flex items-end w-full">
             <input
@@ -80,7 +80,7 @@ function page() {
               <p>[...]</p>
             ) : (
               <p
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
                 className="hover:text-blue-300 hover:underline underline-offset-4 cursor-pointer"
               >
                 [submit]
