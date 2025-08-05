@@ -88,9 +88,7 @@ function page() {
             )}
           </div>
           {success ? (
-            <p className="w-full text-green-400">
-              thanks for your message, i'll read it soon {":>"}
-            </p>
+            <p className="w-full text-green-400">thanks for your message!</p>
           ) : null}
           {error.length > 0 ? (
             <p className="w-full text-red-400">{error}</p>
