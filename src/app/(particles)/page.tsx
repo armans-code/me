@@ -22,7 +22,7 @@ export default function Home() {
             &gt; i'm a big believer in authentic, compounding relationships.
             feel free to reach out to me!
           </p>
-          <p>
+          {/* <p>
             &gt; currently interning at{" "}
             <Link
               className="underline decoration-green-500"
@@ -39,7 +39,7 @@ export default function Home() {
             >
               index my life for LLMs
             </Link>
-          </p>
+          </p> */}
           <div className="flex sm:flex-row flex-col gap-4 text-indigo-300">
             <Link
               className="hover:font-bold hover:underline underline-offset-4"
