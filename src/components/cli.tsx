@@ -328,7 +328,9 @@ function CLI() {
           <input
             type="text"
             placeholder={
-              messages.length === 0 ? "type `help` for a list of commands" : ""
+              messages.length === 0
+                ? "type `help` for a list of commands (e.g. `cat experience.txt`)"
+                : ""
             }
             className="bg-transparent border-none outline-none flex-grow w-full"
             autoFocus

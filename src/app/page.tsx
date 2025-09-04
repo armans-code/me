@@ -1,5 +1,5 @@
 import Link from "next/link";
-import CLI from "../../components/cli";
+import CLI from "../components/cli";
 
 export default function Home() {
   return (
@@ -12,15 +12,18 @@ export default function Home() {
           </div>
           <p>&gt; hi!</p>
           <p>
-            &gt; my name is arman, i'm studying computer science and mathematics
-            at the university of florida
+            &gt; i'm a{" "}
+            <span className="underline decoration-blue-500 underline-offset-4">
+              co-founder at The Context Company
+            </span>
+            , a startup that runs semantic failure monitoring for AI agents.
           </p>
           <p>
-            &gt; i like full-stack web dev, typescript, and agentic workflows
+            &gt; i love full-stack web dev, typescript, and agentic workflows.
           </p>
           <p>
             &gt; i'm a big believer in authentic, compounding relationships.
-            feel free to reach out to me!
+            please feel free to reach out to me!
           </p>
           {/* <p>
             &gt; currently interning at{" "}
