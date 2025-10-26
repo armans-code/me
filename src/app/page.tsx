@@ -12,11 +12,11 @@ export default function Home() {
           </div>
           <p>&gt; hi!</p>
           <p>
-            &gt; i'm a{" "}
-            <span className="underline decoration-blue-500 underline-offset-4">
-              co-founder at The Context Company
-            </span>
-            , a startup that runs semantic failure monitoring for AI agents.
+            &gt; i'm a co-founder at{" "}
+            <Link href="https://thecontext.company/" target="_blank" rel="noopener noreferrer" className="underline decoration-blue-500 underline-offset-4">
+              The Context Company
+            </Link>
+            {" "}- we do semantic failure monitoring for AI agents.
           </p>
           <p>
             &gt; i love full-stack web dev, typescript, and agentic workflows.
