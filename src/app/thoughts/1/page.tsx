@@ -39,17 +39,17 @@ function Page() {
         </p>
         <p>
           - Not remembering simple things (e.g. asking myself at the grocery
-          store, "Do I have enough milk at home?")
+          store, &quot;Do I have enough milk at home?&quot;)
         </p>
         <p>
-          - Wanting to ask an LLM questions about what's on the chalkboard
+          - Wanting to ask an LLM questions about what&apos;s on the chalkboard
           during a live lecture
         </p>
       </div>
       <p>
-        This project genuinely doesn't leave my mind - I've thought about it
-        almost every single day for the last few months. I'm not exactly sure
-        why it piques my interest so much, but I know I want to work on it. I'm
+        This project genuinely doesn&apos;t leave my mind - I&apos;ve thought about it
+        almost every single day for the last few months. I&apos;m not exactly sure
+        why it piques my interest so much, but I know I want to work on it. I&apos;m
         planning on spending most of my free time in the next few months working
         on this and hope to have a reasonable proof of concept by the end of the
         summer.
@@ -65,10 +65,10 @@ function Page() {
         part.
       </p>
       <p>
-        I've been tinkering with both long context and various RAG techniques to
+        I&apos;ve been tinkering with both long context and various RAG techniques to
         solve this. Using just RAG with frame embeddings has poor results when
         it comes to understanding motion or relationships within scenes. On the
-        other hand, Gemini's long context window solves these problems and is
+        other hand, Gemini&apos;s long context window solves these problems and is
         great with video memory, as seen in{" "}
         <Link
           href="https://www.youtube.com/watch?v=nXVvvRhiGjI"
@@ -76,13 +76,13 @@ function Page() {
           rel="noopener noreferrer"
           className="underline"
         >
-          Google's Project Astra
+          Google&apos;s Project Astra
         </Link>
-        . But even a context window this big isn't large enough to store context
+        . But even a context window this big isn&apos;t large enough to store context
         about my entire day (12+ hours of footage), let alone a week.
       </p>
       <p>
-        I'm currently experimenting with a combination of RAG and graph memory.
+        I&apos;m currently experimenting with a combination of RAG and graph memory.
         Ideally, RAG lets us send only relevant clips to the LLM, while
         (multimodal?) graph memory stores complex relationships.
       </p>
@@ -92,10 +92,10 @@ function Page() {
       </div>
       <p>
         Please do reach out if you have any ideas on how I can make this a
-        reality or if you're interested in helping me build this out!
+        reality or if you&apos;re interested in helping me build this out!
       </p>
       <p>
-        I'm no expert in agentic AI (I've mostly stuck to web dev), but I'm
+        I&apos;m no expert in agentic AI (I&apos;ve mostly stuck to web dev), but I&apos;m
         attempting to learn as much as I can to make this happen.
       </p>
     </div>
