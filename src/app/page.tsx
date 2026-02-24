@@ -12,7 +12,7 @@ export default function Home() {
           </div>
           <p>&gt; hi!</p>
           <p>
-            &gt; i'm a co-founder at{" "}
+            &gt; i&apos;m a co-founder at{" "}
             <Link href="https://thecontext.company/" target="_blank" rel="noopener noreferrer" className="underline decoration-blue-500 underline-offset-4">
               The Context Company
             </Link>
@@ -22,7 +22,7 @@ export default function Home() {
             &gt; i love full-stack web dev, typescript, and agentic workflows.
           </p>
           <p>
-            &gt; i'm a big believer in authentic, compounding relationships.
+            &gt; i&apos;m a big believer in authentic, compounding relationships.
             please feel free to reach out to me!
           </p>
           {/* <p>

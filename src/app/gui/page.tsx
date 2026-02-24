@@ -1,6 +1,6 @@
 import MiniDesktop from "./mini-desktop";
 
-function page() {
+function Page() {
   return (
     <div>
       <MiniDesktop />
@@ -8,4 +8,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

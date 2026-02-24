@@ -185,6 +185,7 @@ function CLI() {
                   {
                     name: fileName,
                     content: (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={imageUrl}
                         alt="cat"
@@ -193,7 +194,7 @@ function CLI() {
                     ),
                   },
                 ]);
-              } catch (error) {
+              } catch {
                 // in case we get rate limited
                 setFiles((prev) => [
                   ...prev,
@@ -332,7 +333,7 @@ function CLI() {
                 ? "type `help` for a list of commands (e.g. `cat experience.txt`)"
                 : ""
             }
-            className="bg-transparent border-none outline-none flex-grow w-full"
+            className="bg-transparent border-none outline-none grow w-full"
             autoFocus
             value={input}
             onChange={(e) => setInput(e.target.value)}

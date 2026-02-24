@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { File } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type File = {
   fileName: string;
@@ -36,6 +37,8 @@ const MiniDesktop = () => {
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0 });
   const [catImage, setCatImage] = useState<string>("");
+  const router = useRouter();
+  const windowIdCounter = useRef(0);
 
   useEffect(() => {
     const getCat = async () => {
@@ -74,14 +77,15 @@ const MiniDesktop = () => {
     if (timeSinceLastClick < 300 && selectedFile === fileName) {
       if (!openWindows.find((w) => w.fileName === fileName)) {
         if (fileName === "Terminal") {
-          window.location.href = "/";
+          router.push("/");
           setLastClickTime(currentTime);
           return;
         }
+        windowIdCounter.current += 1;
         const newWindow = {
           fileName,
           minimized: false,
-          id: `window-${Date.now()}`,
+          id: `window-${windowIdCounter.current}`,
         };
         setOpenWindows((prev) => [...prev, newWindow]);
         setWindowPositions((prev) => ({
@@ -104,8 +108,8 @@ const MiniDesktop = () => {
     setLastClickTime(currentTime);
   };
 
-  const handleWindowMouseDown = (windowId: string, e: any) => {
-    if (e.target.closest(".window-title-bar")) {
+  const handleWindowMouseDown = (windowId: string, e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest(".window-title-bar")) {
       setIsDragging(windowId);
       const windowRect = e.currentTarget.getBoundingClientRect();
       setDragOffset({
@@ -117,7 +121,7 @@ const MiniDesktop = () => {
     }
   };
 
-  const handleResizeStart = (windowId: string, e: any) => {
+  const handleResizeStart = (windowId: string, e: React.MouseEvent) => {
     e.preventDefault();
     setIsResizing(windowId);
     setResizeStart({
@@ -127,7 +131,7 @@ const MiniDesktop = () => {
     setActiveWindow(windowId);
   };
 
-  const handleMouseMove = (e: any) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (isDragging) {
       const container = document.getElementById("desktop-container")!;
       const containerRect = container.getBoundingClientRect();
@@ -326,8 +330,10 @@ const MiniDesktop = () => {
                 {window.fileName === "cat.png" ? (
                   <>
                     <p>tip: try reloading the page</p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={catImage}
+                      alt="Random cat"
                       className="w-full h-[90%] object-cover"
                     />
                   </>
@@ -383,8 +389,10 @@ const MiniDesktop = () => {
               setActiveWindow(window.id);
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://win98icons.alexmeub.com/icons/png/file_lines-0.png"
+              alt="File icon"
               className="w-4 h-4 mr-2"
             />
             <span className="text-sm truncate max-w-[120px] select-none">

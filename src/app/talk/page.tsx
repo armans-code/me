@@ -3,7 +3,7 @@ import { useState } from "react";
 import { submitMessage } from "../actions";
 import Link from "next/link";
 
-function page() {
+function Page() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -99,4 +99,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
