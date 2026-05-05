@@ -74,12 +74,6 @@ export default function Home() {
             >
               [leave an anonymous note]
             </Link> */}
-            <Link
-              className="hover:font-bold hover:underline underline-offset-4"
-              href="/thoughts"
-            >
-              [thoughts]
-            </Link>
           </div>
         </div>
         <CLI />
