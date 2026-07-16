@@ -1,19 +1,18 @@
 import Link from "next/link";
 import CLI from "../components/cli";
+import { PageHeader } from "../components/page-header";
 
 export default function Home() {
   return (
-    <div className="text-gray-300 py-12 w-full flex flex-col justify-center items-center">
+    <div className="py-12 w-full flex flex-col justify-center items-center">
       <div className="md:w-3/5 w-4/5 flex flex-col gap-4">
-        <div className="relative mb-4">
-          <h1 className="absolute -left-5">
-            <span className="text-orange-300">home</span>
-          </h1>
-        </div>
+        <PageHeader>
+          <span className="text-orange-600 dark:text-orange-300">home</span>
+        </PageHeader>
         <div className="relative -left-5 mt-4 mb-4 flex flex-col gap-4">
           <div>
             <p>Arman Kumaraswamy</p>
-            <p className="text-gray-400 text-sm">San Francisco, CA</p>
+            <p className="text-muted text-sm">San Francisco, CA</p>
           </div>
           <p>&gt; hi!</p>
           <p>
@@ -51,7 +50,7 @@ export default function Home() {
               index my life for LLMs
             </Link>
           </p> */}
-          <div className="flex sm:flex-row flex-col gap-4 text-indigo-300">
+          <div className="flex sm:flex-row flex-col gap-4 text-indigo-600 dark:text-indigo-300">
             <Link
               className="hover:font-bold hover:underline underline-offset-4"
               href="https://x.com/ksw_arman"
