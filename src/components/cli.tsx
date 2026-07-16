@@ -308,11 +308,11 @@ function CLI() {
           key={i}
           className={
             message.type === "input"
-              ? "text-indigo-300"
-              : "text-green-300 whitespace-pre-wrap"
+              ? "text-indigo-600 dark:text-indigo-300"
+              : "text-green-700 dark:text-green-300 whitespace-pre-wrap"
           }
         >
-          <span className="text-indigo-300">
+          <span className="text-indigo-600 dark:text-indigo-300">
             {message.type === "input" ? "> " : ""}
           </span>
           {message.message}

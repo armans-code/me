@@ -31,14 +31,14 @@ const components: Components = {
     return (
       <div className="relative">
         <p className="absolute -left-5">&gt;</p>
-        <h1 className="text-indigo-300">{children}</h1>
+        <h1 className="text-indigo-600 dark:text-indigo-300">{children}</h1>
       </div>
     );
   },
   p: ({ children }) => <p>{children}</p>,
   em: ({ children }) => <i>{children}</i>,
   strong: ({ children }) => (
-    <span className="text-indigo-300">{children}</span>
+    <span className="text-indigo-600 dark:text-indigo-300">{children}</span>
   ),
   a: ({ href, children, className, node: _node, ...props }) => {
     const isFootnoteLink =
@@ -50,7 +50,7 @@ const components: Components = {
       return (
         <a
           href={href}
-          className="text-indigo-300 no-underline hover:underline"
+          className="text-indigo-600 no-underline hover:underline dark:text-indigo-300"
           {...props}
         >
           {children}
@@ -73,12 +73,14 @@ const components: Components = {
     );
   },
   blockquote: ({ children }) => (
-    <blockquote className="border-l border-indigo-300/50 pl-4 text-gray-400">
+    <blockquote className="border-l border-indigo-300/50 pl-4 text-muted">
       {children}
     </blockquote>
   ),
   sup: ({ children }) => (
-    <sup className="ml-0.5 text-[0.7em] text-indigo-300">{children}</sup>
+    <sup className="ml-0.5 text-[0.7em] text-indigo-600 dark:text-indigo-300">
+      {children}
+    </sup>
   ),
   section: ({ children, node: _node, className, ...props }) => {
     if ("data-footnotes" in props) {
@@ -86,7 +88,7 @@ const components: Components = {
         <section
           {...props}
           className={[
-            "mt-4 border-t border-gray-700 pt-4 text-sm text-gray-400",
+            "mt-4 border-t border-border pt-4 text-sm text-muted",
             className,
           ]
             .filter(Boolean)

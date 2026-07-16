@@ -22,14 +22,32 @@ export const metadata: Metadata = {
   ],
 };
 
+const themeInitScript = `
+(function () {
+  try {
+    var theme = localStorage.getItem("theme");
+    var resolved = theme === "light" ? "light" : "dark";
+    document.documentElement.classList.add(resolved);
+    document.documentElement.classList.remove(resolved === "light" ? "dark" : "light");
+  } catch (e) {
+    document.documentElement.classList.add("dark");
+  }
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html className="bg-[#0f0f0f]" lang="en">
-      <body className={geistMono.className}>{children}</body>
+    <html className="dark" lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className={`${geistMono.className} bg-background text-foreground`}>
+        {children}
+      </body>
     </html>
   );
 }
