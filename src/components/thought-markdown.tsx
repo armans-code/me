@@ -126,11 +126,7 @@ const components: Components = {
       );
     }
 
-    return (
-      <div className="ml-5 flex flex-col gap-4" {...props}>
-        {children}
-      </div>
-    );
+    return <div className="ml-5 flex flex-col gap-4">{children}</div>;
   },
 };
 
