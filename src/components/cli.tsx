@@ -176,7 +176,7 @@ function CLI() {
               setInput("");
               try {
                 const image = await fetch(
-                  `https://cataas.com/cat?width=200&height=200`
+                  `https://cataas.com/cat?width=200&height=200`,
                 ).then((data) => data.blob());
                 const imageUrl = URL.createObjectURL(image);
                 // @ts-expect-error we are setting content to an image, not string
@@ -283,7 +283,7 @@ function CLI() {
           messages
             .filter((message) => message.type === "input")
             .map((message) => message.message)
-            .pop() || ""
+            .pop() || "",
         );
       }
     };
@@ -330,7 +330,7 @@ function CLI() {
             type="text"
             placeholder={
               messages.length === 0
-                ? "type `help` for a list of commands (e.g. `cat experience.txt`)"
+                ? "bash-style cli. type `help` for a list of commands, or try `cat experience.txt`"
                 : ""
             }
             className="bg-transparent border-none outline-none grow w-full"
