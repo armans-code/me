@@ -1,12 +1,3 @@
-/**
- * Win98 desktop alias — isolate from site theme tokens.
- */
-function DesktopLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="gui-shell min-h-screen bg-[#6fb5b7] text-black">
-      {children}
-    </div>
-  );
-}
+import Win98Layout from "../_components/win98-layout";
 
-export default DesktopLayout;
+export default Win98Layout;
