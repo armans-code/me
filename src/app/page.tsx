@@ -13,17 +13,20 @@ export default function Home() {
           <p>&gt; hi!</p>
           <p>
             &gt; i&apos;m a co-founder at{" "}
-            <Link href="https://thecontext.company/" target="_blank" rel="noopener noreferrer" className="underline decoration-blue-500 underline-offset-4">
+            <Link
+              href="https://thecontext.company/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-blue-500 underline-offset-4"
+            >
               The Context Company
-            </Link>
-            {" "}- we do semantic failure monitoring for AI agents.
+            </Link>{" "}
+            - we help teams monitor and improve AI products.
           </p>
+          <p>&gt; i love writing typescript and working in AI.</p>
           <p>
-            &gt; i love full-stack web dev, typescript, and agentic workflows.
-          </p>
-          <p>
-            &gt; i&apos;m a big believer in authentic, compounding relationships.
-            please feel free to reach out to me!
+            &gt; i&apos;m a big believer in authentic, compounding
+            relationships. please feel free to reach out to me!
           </p>
           {/* <p>
             &gt; currently interning at{" "}
