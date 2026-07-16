@@ -3,9 +3,14 @@ import CLI from "../components/cli";
 
 export default function Home() {
   return (
-    <div className="text-gray-300 p-4 w-full flex justify-center">
-      <div>
-        <div className="mb-4 mt-16 flex flex-col gap-4">
+    <div className="text-gray-300 py-12 w-full flex flex-col justify-center items-center">
+      <div className="md:w-3/5 w-4/5 flex flex-col gap-4">
+        <div className="relative mb-4">
+          <h1 className="absolute -left-5">
+            <span className="text-orange-300">home</span>
+          </h1>
+        </div>
+        <div className="relative -left-5 mt-4 mb-4 flex flex-col gap-4">
           <div>
             <p>Arman Kumaraswamy</p>
             <p className="text-gray-400 text-sm">San Francisco, CA</p>
@@ -85,7 +90,9 @@ export default function Home() {
             </Link> */}
           </div>
         </div>
-        <CLI />
+        <div className="relative -left-5">
+          <CLI />
+        </div>
       </div>
       {/* <Link
         href="/gui"

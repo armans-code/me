@@ -18,7 +18,7 @@ function Page() {
         <Link
           key={thought.id}
           href={`/thoughts/${thought.id}`}
-          className="hover:underline max-w-fit"
+          className="relative -left-5 hover:underline max-w-fit"
         >
           <span className="text-indigo-300">{thought.id}.</span> {thought.title}{" "}
           <span className="text-sm text-gray-400">({thought.date})</span>
