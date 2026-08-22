@@ -9,8 +9,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://armank.dev"),
   title: "arman's living room",
-  description: "arman's living room",
+  description:
+    "Personal site of Arman Kumaraswamy, co-founder at The Context Company in San Francisco. Writing, work history, and how to get in touch.",
   keywords: [
     "arman",
     "kumaraswamy",
@@ -20,6 +22,12 @@ export const metadata: Metadata = {
     "armank.dev",
     "armank dev",
   ],
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/markdown": "/",
+    },
+  },
 };
 
 const themeInitScript = `
@@ -44,6 +52,8 @@ export default function RootLayout({
     <html className="dark" lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <link rel="describedby" href="https://armank.dev/llms.txt" />
+        <link rel="alternate" type="text/markdown" href="/" />
       </head>
       <body className={`${geistMono.className} bg-background text-foreground`}>
         {children}
