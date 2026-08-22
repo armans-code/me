@@ -1,7 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  outputFileTracingIncludes: {
+    "*": ["./content/**/*.md"],
+  },
+  async headers() {
+    return [
+      {
+        source: "/((?!_next/static|_next/image).*)",
+        headers: [
+          {
+            key: "Vary",
+            value:
+              "Accept, Accept-Encoding, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

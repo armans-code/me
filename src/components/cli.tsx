@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
+import { EXPERIENCE_TEXT, SOCIALS_TEXT } from "@/lib/site";
 
 const INITIAL_FILES = [
   {
@@ -8,13 +9,11 @@ const INITIAL_FILES = [
   },
   {
     name: "experience.txt",
-    content:
-      "mintlify (w22):\n - software engineer intern (may 2025 - august 2025)\n - Next.js, MongoDB, Express\n\napten (s24):\n - software engineer intern (may 2024 - july 2024)\n - Next.js, LangChain, AWS CDK\n\nrevisiondojo (f24):\n - software engineer (october 2023 - march 2024)\n - Next.js, PostgreSQL, NoSQL\n\nsolace health:\n - software engineer intern (july 2023 - october 2023)\n - Next.js, NestJS, PostgreSQL, Redis",
+    content: EXPERIENCE_TEXT,
   },
   {
     name: "socials.txt",
-    content:
-      "twitter: ksw_arman\ngithub: armans-code\nlinkedin: armankumaraswamy",
+    content: SOCIALS_TEXT,
   },
   {
     name: "gui.app",
