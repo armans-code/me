@@ -4,6 +4,20 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "*": ["./content/**/*.md"],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Vary",
+            value:
+              "Accept, Accept-Encoding, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

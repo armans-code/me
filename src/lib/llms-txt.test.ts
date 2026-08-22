@@ -8,7 +8,7 @@ describe("llmsTxt", () => {
     const lines = text.split("\n");
 
     expect(lines[0]).toBe(`# ${PERSON.name}`);
-    expect(text).toMatch(/^# .+\n\n> /s);
+    expect(text).toMatch(/^# .+\n\n> /);
     expect(text).toContain("## When to use this");
     expect(text).toContain("## Pages");
     expect(text).toContain("## Optional");

@@ -4,5 +4,16 @@
       "path": "/api/cron",
       "schedule": "20 16 * * *"
     }
+  ],
+  "headers": [
+    {
+      "source": "/((?!_next/static|_next/image).*)",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept, Accept-Encoding, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        }
+      ]
+    }
   ]
 }

@@ -1,44 +1,50 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { applyNegotiationHeaders, preferredType } from "@/lib/accept";
-import { notAcceptableBody } from "@/lib/http";
+import { markdownHeaders, notAcceptableBody } from "@/lib/http";
+import { markdownResponseBody } from "@/lib/markdown";
 import { markdownAlternatePath } from "@/lib/paths";
 import { absoluteUrl } from "@/lib/site";
 
-function withDiscoveryHeaders(
+const HTML_VARY =
+  "Accept, Accept-Encoding, rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch";
+
+function withHtmlDiscoveryHeaders(
   headers: Headers,
   pathname: string,
 ): void {
   applyNegotiationHeaders(headers);
-  const existingLink = headers.get("Link");
+  headers.set("Vary", HTML_VARY);
   const describedBy = `<${absoluteUrl("/llms.txt")}>; rel="describedby"`;
   const alternate = `<${markdownAlternatePath(pathname)}>; rel="alternate"; type="text/markdown"`;
+  const existingLink = headers.get("Link");
   headers.set(
     "Link",
     existingLink ? `${existingLink}, ${describedBy}, ${alternate}` : `${describedBy}, ${alternate}`,
   );
 }
 
+function markdownResponse(pathname: string): Response {
+  const path = pathname.endsWith(".md") ? pathname.slice(0, -3) || "/" : pathname;
+  const { body, status } = markdownResponseBody(path);
+  return new Response(body, {
+    status,
+    headers: markdownHeaders(path),
+  });
+}
+
 export function proxy(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   if (pathname.endsWith(".md")) {
-    const url = req.nextUrl.clone();
-    url.pathname = `/api/markdown${pathname.slice(0, -3) || "/"}`;
-    const rewritten = NextResponse.rewrite(url);
-    withDiscoveryHeaders(rewritten.headers, pathname);
-    return rewritten;
+    return markdownResponse(pathname);
   }
 
   const acceptHeader = req.headers.get("accept");
   const chosen = preferredType(acceptHeader);
 
   if (chosen === "text/markdown") {
-    const url = req.nextUrl.clone();
-    url.pathname = `/api/markdown${pathname === "/" ? "" : pathname}`;
-    const rewritten = NextResponse.rewrite(url);
-    withDiscoveryHeaders(rewritten.headers, pathname);
-    return rewritten;
+    return markdownResponse(pathname);
   }
 
   if (chosen === null && acceptHeader) {
@@ -52,7 +58,7 @@ export function proxy(req: NextRequest) {
   }
 
   const res = NextResponse.next();
-  withDiscoveryHeaders(res.headers, pathname);
+  withHtmlDiscoveryHeaders(res.headers, pathname);
   return res;
 }
 
