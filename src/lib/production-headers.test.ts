@@ -8,5 +8,7 @@ describe("production Vary configuration", () => {
 
     expect(vercel).toContain("Accept, Accept-Encoding");
     expect(nextConfig).toContain("Accept, Accept-Encoding");
+    expect(vercel).toContain("((?!_next/static|_next/image).*)");
+    expect(nextConfig).toContain("((?!_next/static|_next/image).*)");
   });
 });

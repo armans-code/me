@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: "/((?!_next/static|_next/image).*)",
         headers: [
           {
             key: "Vary",
