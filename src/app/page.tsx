@@ -4,6 +4,29 @@ import { PageHeader } from "../components/page-header";
 import { personJsonLd, serializeJsonLd } from "@/lib/json-ld";
 import { HOME_LINES, PERSON, SOCIAL_LINKS } from "@/lib/site";
 
+function renderHomeLine(line: string) {
+  const companyName = PERSON.worksFor.name;
+  const companyIndex = line.indexOf(companyName);
+  if (companyIndex === -1) {
+    return line;
+  }
+
+  return (
+    <>
+      {line.slice(0, companyIndex)}
+      <Link
+        className="underline underline-offset-4 hover:font-bold text-indigo-600 dark:text-indigo-300"
+        href={PERSON.worksFor.url}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {companyName}
+      </Link>
+      {line.slice(companyIndex + companyName.length)}
+    </>
+  );
+}
+
 export default function Home() {
   const jsonLd = personJsonLd();
 
@@ -25,7 +48,7 @@ export default function Home() {
             <p className="text-muted text-sm">{PERSON.location}</p>
           </div>
           {HOME_LINES.map((line) => (
-            <p key={line}>&gt; {line}</p>
+            <p key={line}>&gt; {renderHomeLine(line)}</p>
           ))}
           <div className="flex sm:flex-row flex-col gap-4 text-indigo-600 dark:text-indigo-300">
             {SOCIAL_LINKS.map((link) => (

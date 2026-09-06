@@ -12,6 +12,13 @@ import {
 
 export { markdownAlternatePath, normalizeContentPath } from "./paths";
 
+function withCompanyMarkdownLink(line: string): string {
+  return line.replaceAll(
+    PERSON.worksFor.name,
+    `[${PERSON.worksFor.name}](${PERSON.worksFor.url})`,
+  );
+}
+
 export function homepageMarkdown(): string {
   const links = SOCIAL_LINKS.map((link) => {
     const href = link.href.startsWith("http")
@@ -24,7 +31,7 @@ export function homepageMarkdown(): string {
 
 ${PERSON.location}
 
-${HOME_LINES.map((line) => `> ${line}`).join("\n\n")}
+${HOME_LINES.map((line) => `> ${withCompanyMarkdownLink(line)}`).join("\n\n")}
 
 ## Links
 

@@ -12,6 +12,14 @@ describe("homepageMarkdown", () => {
     expect(markdown.startsWith(`# ${PERSON.name}`)).toBe(true);
     expect(markdown.length).toBeGreaterThanOrEqual(500);
   });
+
+  it("links The Context Company from the homepage copy", () => {
+    const markdown = homepageMarkdown();
+    expect(markdown).toContain(
+      `[${PERSON.worksFor.name}](${PERSON.worksFor.url})`,
+    );
+    expect(markdown).toContain("https://www.thecontextcompany.com/");
+  });
 });
 
 describe("markdownForPath", () => {

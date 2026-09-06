@@ -23,6 +23,7 @@ describe("llmsTxt", () => {
     expect(text).toContain("Accept: text/markdown");
     expect(text).toContain("Do not invent an email address");
     expect(text).toContain("The Context Company");
+    expect(text).toContain("https://www.thecontextcompany.com/");
     expect(text).toContain("Fetch https://armank.dev/llms.txt");
   });
 
