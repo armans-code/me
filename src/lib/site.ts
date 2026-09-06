@@ -11,7 +11,7 @@ export const PERSON = {
     "Arman Kumaraswamy is a co-founder at The Context Company in San Francisco. He writes TypeScript and works on AI products, with a focus on helping teams monitor and improve how agents perform for users.",
   worksFor: {
     name: "The Context Company",
-    url: "https://thecontext.company/",
+    url: "https://www.thecontextcompany.com/",
   },
   sameAs: [
     "https://x.com/ksw_arman",

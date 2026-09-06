@@ -12,4 +12,9 @@ describe("homepage text without JavaScript", () => {
     expect(text.length).toBeGreaterThanOrEqual(500);
     expect(HOME_LINES.join("\n").length).toBeGreaterThan(400);
   });
+
+  it("points The Context Company at the public company site", () => {
+    expect(PERSON.worksFor.url).toBe("https://www.thecontextcompany.com/");
+    expect(HOME_LINES.join("\n")).toContain(PERSON.worksFor.name);
+  });
 });

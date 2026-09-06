@@ -14,6 +14,8 @@ describe("personJsonLd", () => {
     expect(jsonLd.jobTitle).toBe(PERSON.jobTitle);
     expect(jsonLd.worksFor["@type"]).toBe("Organization");
     expect(jsonLd.worksFor.name).toBe(PERSON.worksFor.name);
+    expect(jsonLd.worksFor.url).toBe(PERSON.worksFor.url);
+    expect(jsonLd.worksFor.url).toBe("https://www.thecontextcompany.com/");
     expect(jsonLd.sameAs).toEqual(PERSON.sameAs);
   });
 
