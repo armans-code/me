@@ -23,8 +23,8 @@ export const PERSON = {
 export const HOME_LINES = [
   "hi!",
   "i'm a co-founder at The Context Company - we help teams monitor and improve AI products. we turn traces, user feedback, and product signals into a clear picture of how agents actually perform.",
-  "i love writing typescript and working in AI. previously: mintlify (software engineer intern), apten (software engineer intern), revisiondojo (software engineer), and solace health (software engineer intern).",
-  "i'm a big believer in authentic, compounding relationships. please feel free to reach out to me on twitter, github, or linkedin. i also publish thoughts on AI products and side projects.",
+  "i love writing typescript and working in AI. previously: mintlify, apten, revisiondojo, solace health.",
+  "i'm a big believer in authentic, compounding relationships. please reach out to me and say hi!",
 ] as const;
 
 export const EXPERIENCE_TEXT = `mintlify (w22):
