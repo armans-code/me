@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         pathname:
           "/system/resources/thumbnails/025/221/361/small_2x/cartoon-cat-cute-ai-generate-png.png",
       },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

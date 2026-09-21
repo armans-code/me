@@ -68,11 +68,15 @@ function thoughtMarkdown(id: string): string | null {
   const thought = getThought(id);
   if (!thought) return null;
 
+  const header = thought.image
+    ? `![${thought.imageAlt ?? thought.title}](${absoluteUrl(thought.image)})\n\n`
+    : "";
+
   return `# ${thought.title}
 
 _${thought.date}_
 
-${thought.content.trim()}
+${header}${thought.content.trim()}
 `;
 }
 
