@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { isValidElement } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import type { ReactNode } from "react";
+import TweetEmbed from "./tweet-embed";
+import { parseTweetUrl } from "@/lib/tweet";
 
 function isFootnoteItem(id: string | undefined): boolean {
   return Boolean(id?.includes("user-content-fn-"));
@@ -16,6 +19,34 @@ function childrenHaveFootnoteItems(children: ReactNode): boolean {
       "props" in child &&
       isFootnoteItem((child as { props?: { id?: string } }).props?.id),
   );
+}
+
+function codeBlockText(children: ReactNode): string {
+  if (typeof children === "string" || typeof children === "number") {
+    return String(children);
+  }
+  if (Array.isArray(children)) {
+    return children.map(codeBlockText).join("");
+  }
+  if (isValidElement<{ children?: ReactNode }>(children)) {
+    return codeBlockText(children.props.children);
+  }
+  return "";
+}
+
+function tweetBlockUrl(children: ReactNode): string | null {
+  const child = Array.isArray(children) ? children[0] : children;
+  if (!isValidElement<{ className?: string; children?: ReactNode }>(child)) {
+    return null;
+  }
+  const language = (child.props.className ?? "")
+    .split(" ")
+    .find((token) => token.startsWith("language-"));
+  if (language !== "language-tweet") {
+    return null;
+  }
+  const url = codeBlockText(child.props.children).trim().split(/\s+/)[0] ?? "";
+  return parseTweetUrl(url) ? url : null;
 }
 
 const components: Components = {
@@ -77,6 +108,13 @@ const components: Components = {
       {children}
     </blockquote>
   ),
+  pre: ({ children }) => {
+    const url = tweetBlockUrl(children);
+    if (url) {
+      return <TweetEmbed url={url} />;
+    }
+    return <pre>{children}</pre>;
+  },
   sup: ({ children }) => (
     <sup className="ml-0.5 text-[0.7em] text-indigo-600 dark:text-indigo-300">
       {children}

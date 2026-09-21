@@ -7,6 +7,8 @@ export type Thought = {
   title: string;
   date: string;
   label: string;
+  image: string | null;
+  imageAlt: string | null;
   content: string;
 };
 
@@ -39,6 +41,8 @@ export function getThought(id: string): Thought | null {
     title: String(data.title ?? ""),
     date: String(data.date ?? ""),
     label: String(data.label ?? id),
+    image: typeof data.image === "string" ? data.image : null,
+    imageAlt: typeof data.imageAlt === "string" ? data.imageAlt : null,
     content,
   };
 }
@@ -47,4 +51,29 @@ export function getAllThoughts(): Thought[] {
   return getThoughtIds()
     .map((id) => getThought(id))
     .filter((thought): thought is Thought => thought !== null);
+}
+
+const SKIPPED_BLOCK_RE = /^(#{1,6}\s|>\s*|```|---|<)/;
+
+export function thoughtExcerpt(thought: Thought, maxLength = 160): string {
+  const block = thought.content
+    .split(/\n\s*\n/)
+    .map((part) => part.trim())
+    .find((part) => part.length > 0 && !SKIPPED_BLOCK_RE.test(part));
+
+  if (!block) {
+    return thought.title;
+  }
+
+  const plain = block
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[*_~`#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (plain.length <= maxLength) {
+    return plain;
+  }
+  return `${plain.slice(0, maxLength - 1).trimEnd()}…`;
 }
